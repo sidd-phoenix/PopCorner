@@ -1,0 +1,42 @@
+version: '3'
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3001:3001"
+    depends_on:
+      - user-service
+      - movie-service
+      - booking-service
+      - snack-service
+      - payment-service
+  
+  user-service:
+    build: ./services/user-service
+    ports:
+      - "3002:3002"
+  
+  booking-service:
+    build: ./services/booking-service
+    ports:
+      - "3003:3003"
+  
+  movie-service:
+    build: ./services/movie-service
+    ports:
+      - "3004:3004"
+  
+  snack-service:
+    build: ./services/snack-service
+    ports:
+      - "3005:3005"
+  
+  payment-service:
+    build: ./services/payment-service
+    ports:
+      - "3006:3006"
