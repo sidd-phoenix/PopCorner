@@ -9,31 +9,30 @@ import CinemaCard from './components/CinemaCard';
 import DateCarousel from './components/DateCarousel';
 import MovieSlide from './components/MovieSlide';
 import SeatLayout from './components/SeatLayout';
-import TicketPopup from './components/TicketPopup';
+import UserProfile from './components/UserProfile';
+import CheckoutPage from './components/CheckoutPage';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path='/' element={
-          <>
+          <div className='App'>
           <header>
             <Navbar />
           </header>
           <main>
             <Carousel />
-            {/* <Cards /> */}
-            {/* <CinemaCard />
-            <SeatLayout /> */}
+            <Cards />
           </main>
           <footer>
             <Footer />
           </footer>
-          </>
+          </div>
         }
         />
         <Route path='/movies/:id' element={
-          <>
+          <div className='App'>
           <header>
             <Navbar />
           </header>
@@ -45,11 +44,11 @@ function App() {
           <footer>
             <Footer />
           </footer>
-          </>
+          </div>
         } 
         />
         <Route path='/movies/:id/seatSelection' element={
-          <>
+          <div className='App'>
           <header>
             <Navbar />
           </header>
@@ -59,7 +58,21 @@ function App() {
           <footer>
             <Footer />
           </footer>
-          </>
+          </div>
+        }
+        />
+        <Route path='/profile' element={
+          <div className='App'>
+          <header>
+            <Navbar />
+          </header>
+          <main>
+            <UserProfile />
+          </main>
+          <footer>
+            <Footer />
+          </footer>
+          </div>
         }
         />
       </Routes>

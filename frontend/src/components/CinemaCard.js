@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CinemaCard = () => {
   const [selectedTime, setSelectedTime] = useState(null);
+  const navigate = useNavigate(); // Initialize navigate
 
   // List of available times
   const times = ["10:25 AM", "03:30 PM", "06:05 PM", "08:40 PM", "11:15 PM"];
@@ -9,6 +11,8 @@ const CinemaCard = () => {
   // Function to handle time selection
   const handleTimeClick = (time) => {
     setSelectedTime(time);
+    const currentPath = window.location.pathname;
+    navigate(`${currentPath}/seatSelection`); // Navigate to seat selection page
   };
 
   return (
