@@ -22,9 +22,7 @@ const Navbar = () => {
     <div className="navbar bg-base-100 px-4">
       {/* Logo */}
       <div className="flex-1">
-        <button onClick={handleLogoClick} className="btn btn-ghost text-xl">
-          PopCorner
-        </button>
+          <img src='./logo.png' className='btn btn-ghost' onClick={handleLogoClick}></img>
       </div>
 
       {/* Search Box */}

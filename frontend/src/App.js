@@ -10,7 +10,8 @@ import DateCarousel from './components/DateCarousel';
 import MovieSlide from './components/MovieSlide';
 import SeatLayout from './components/SeatLayout';
 import UserProfile from './components/UserProfile';
-import CheckoutPage from './components/CheckoutPage';
+import PaymentSuccess from './components/PaymentSuccess';
+import PaymentFailure from './components/PaymentFailure';
 
 function App() {
   return (
@@ -75,6 +76,8 @@ function App() {
           </div>
         }
         />
+        <Route path='/pay-failure' element={<PaymentFailure />}/>
+        <Route path='/pay-success' element={<PaymentSuccess />}/>
       </Routes>
     </Router>
   );

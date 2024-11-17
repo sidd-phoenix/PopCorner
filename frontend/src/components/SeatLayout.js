@@ -159,7 +159,7 @@ const SeatLayout = () => {
 
         </div>
         
-        {selectedSeats.length>0 && <TicketSummary seatCount={seatCount} seatlist={selectedSeats} />}
+        {selectedSeats.length>0 && <TicketSummary seatCount={seatCount} selectedSeats={selectedSeats} />}
 
       </div>
 

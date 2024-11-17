@@ -4,6 +4,8 @@ services:
     build: ./frontend
     ports:
       - "3000:3000"
+    depends_on:
+      - api-gateway
 
   api-gateway:
     build: ./api-gateway
@@ -15,6 +17,7 @@ services:
       - booking-service
       - snack-service
       - payment-service
+      - theater-service
   
   user-service:
     build: ./services/user-service
@@ -40,3 +43,8 @@ services:
     build: ./services/payment-service
     ports:
       - "3006:3006"
+
+  theater-service:
+    build: ./services/theater-service
+    ports:
+      - "3007:3007"

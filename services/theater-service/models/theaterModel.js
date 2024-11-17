@@ -12,10 +12,6 @@ const theaterSchema = new mongoose.Schema({
       city: { type: String, required: true },
       state: { type: String, required: true },
       zipCode: { type: String, required: true },
-    },
-    coordinates: {
-      latitude: { type: Number, required: true },
-      longitude: { type: Number, required: true },
     }
   },
   screens: [
@@ -23,18 +19,12 @@ const theaterSchema = new mongoose.Schema({
       screenNumber: { type: Number, required: true },
       type: { type: String, enum: ['Standard', 'IMAX', '4DX', 'VIP'], required: true },
       seatingCapacity: { type: Number, required: true },
-      facilities: [
-        { type: String, enum: ['3D', 'Recliner Seats', 'Dolby Sound', 'VIP Lounge', 'Wheelchair Accessible'] }
-      ]
     }
   ],
   contact: {
     phone: { type: String, required: true },
     email: { type: String, required: true }
   },
-  amenities: [
-    { type: String, enum: ['Food Court', 'Parking', 'Restrooms', 'Arcade', 'Gift Shop'] }
-  ],
   showtimes: [
     {
       movieId: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie', required: true },

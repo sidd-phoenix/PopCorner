@@ -1,17 +1,60 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import Loading from "./Loading";
 
 const MovieSlide = () => {
+  const { id } = useParams(); // Extract the dynamic id from the URL
+  const [loading, setLoading] = useState(false);
+  const [movie, setMovie] = useState(null); // State to store fetched movie data
+  const [error, setError] = useState(null); // State to handle errors
+
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null); // Clear any previous errors
+
+    try {
+      const res = await axios.get(`http://localhost:3001/movies/${id}`);
+      setMovie(res.data); // Store the fetched movie data
+    } catch (err) {
+      setError("Failed to fetch movie data. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (id) {
+      fetchData();
+    }
+  }, [id]);
+
   return (
-    <div className="card card-side bg-base-100 shadow-xl">
-        <figure>
-            <img
-            src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-            alt="Movie" />
-        </figure>
-        <div className="card-body">
-            <h2 className="card-title">New movie is released!</h2>
-            <p>Click the button to watch on Jetflix app.</p>
-        </div>
+    <div>
+      {loading ? (
+        <Loading />
+      ) : error ? (
+        <p className="text-red-500">{error}</p>
+      ) : movie && <MovieCard movie={movie} />}
+    </div>
+  );
+};
+
+const MovieCard = ({ movie }) => {
+  // Extract the year from releaseDate
+  const releaseYear = new Date(movie.releaseDate).getFullYear();
+
+  return (
+    <div className="card card-side m-2 shadow-xl">
+          <figure>
+            <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt={movie.title} /> {/* Movie poster */}
+          </figure>
+          <div className="card-body">
+            <h2 className="card-title">{movie.title}</h2> {/* Movie title */}
+            <p>{movie.description}</p> {/* Movie description */}
+            <p>Genre: {movie.genre}</p> {/* Movie genre */}
+            <p>Release Year: {releaseYear}</p> {/* Release year */}
+          </div>
     </div>
   );
 };

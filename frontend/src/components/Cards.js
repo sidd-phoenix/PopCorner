@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Loading from './Loading';
 
 const Cards = ()=>{
 
@@ -10,7 +11,7 @@ const Cards = ()=>{
 
     const fetchData=async ()=>{
         setLoading(true);
-        const res=await axios.get("http://localhost:3001/movies");
+        const res=await axios.get("http://localhost:3001/movies/");
         setCards(res.data);
         setLoading(false);
     } 
@@ -22,7 +23,8 @@ const Cards = ()=>{
 
     return(
         <div className='flex mx-auto'>
-            {loading && <p>Loading..</p>}
+            {/*  Loading skeletons */}
+            {loading && <Loading />}
 
             {!loading && cards.map((item)=>{
                 return(
@@ -44,7 +46,7 @@ const MovieCard=(props)=>{
     }
 
     return(
-        <div className="card card-side bg-base-100 shadow-xl p-2">
+        <div className="card card-side bg-base-200 shadow-xl m-2">
                 <figure>
                     <img
                     src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
