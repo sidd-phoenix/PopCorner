@@ -15,6 +15,7 @@ const MovieSlide = () => {
 
     try {
       const res = await axios.get(`http://localhost:3001/movies/${id}`);
+      // console.log(res.data)
       setMovie(res.data); // Store the fetched movie data
     } catch (err) {
       setError("Failed to fetch movie data. Please try again later.");
@@ -46,9 +47,7 @@ const MovieCard = ({ movie }) => {
 
   return (
     <div className="card card-side m-2 shadow-xl">
-          <figure>
-            <img src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp" alt={movie.title} /> {/* Movie poster */}
-          </figure>
+            <img src={movie.img_url} alt={movie.title} /> {/* Movie poster */}
           <div className="card-body">
             <h2 className="card-title">{movie.title}</h2> {/* Movie title */}
             <p>{movie.description}</p> {/* Movie description */}

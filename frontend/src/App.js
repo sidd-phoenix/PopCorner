@@ -76,8 +76,8 @@ function App() {
           </div>
         }
         />
-        <Route path='/pay-failure' element={<PaymentFailure />}/>
-        <Route path='/pay-success' element={<PaymentSuccess />}/>
+        <Route path='/payment-failure' element={<PaymentFailure />}/>
+        <Route path='/payment-success' element={<PaymentSuccess />}/>
       </Routes>
     </Router>
   );

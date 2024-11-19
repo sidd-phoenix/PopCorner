@@ -21,10 +21,6 @@ const theaterSchema = new mongoose.Schema({
       seatingCapacity: { type: Number, required: true },
     }
   ],
-  contact: {
-    phone: { type: String, required: true },
-    email: { type: String, required: true }
-  },
   showtimes: [
     {
       movieId: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie', required: true },
@@ -36,21 +32,7 @@ const theaterSchema = new mongoose.Schema({
         }
       ]
     }
-  ],
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
-  }
-});
-
-// Middleware to update `updatedAt` on document update
-theaterSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  next();
+  ]
 });
 
 module.exports = mongoose.model('Theater', theaterSchema);

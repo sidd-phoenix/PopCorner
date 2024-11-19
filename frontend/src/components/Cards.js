@@ -22,7 +22,7 @@ const Cards = ()=>{
 
 
     return(
-        <div className='flex mx-auto'>
+        <div className='flex flex-wrap justify-evenly'>
             {/*  Loading skeletons */}
             {loading && <Loading />}
 
@@ -46,11 +46,11 @@ const MovieCard=(props)=>{
     }
 
     return(
-        <div className="card card-side bg-base-200 shadow-xl m-2">
+        <div className="card card-side bg-base-200 shadow-xl m-2 w-1/4">
                 <figure>
                     <img
-                    src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
-                    alt="Movie" />
+                    src={props.ele.img_url}
+                    alt={props.ele.title} />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{props.ele.title}</h2>
