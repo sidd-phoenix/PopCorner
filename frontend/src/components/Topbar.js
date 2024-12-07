@@ -7,17 +7,22 @@ import { useParams } from "react-router-dom";
 const Topbar = ({seatCount, setSeatCount, isModalOpen, setIsModalOpen, setSelectedSeats}) => {
 
   const [data, setData]=useState(null);
+  const [theater, setTheater]=useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const{id}=useParams();
+  const{m_id,t_id}=useParams();
+
+
 
   const fetchData = async () => {
     setLoading(true);
     setError(null); // Clear any previous errors
 
     try {
-      const res = await axios.get(`http://localhost:3001/movies/${id}`);
-      setData(res.data); // Store the fetched movie data
+      const res = await axios.get(`http://localhost:3001/movies/${m_id}`);
+      const theaterData=await axios.get(`http://localhost:3007/theaters/${t_id}`);
+      setData(res.data);
+      setTheater(theaterData.data);
     } catch (err) {
       setError("Failed to fetch movie data. Please try again later.");
     } finally {
@@ -30,10 +35,8 @@ const Topbar = ({seatCount, setSeatCount, isModalOpen, setIsModalOpen, setSelect
   };
 
   useEffect(()=>{
-    if(id){
       fetchData();
-    }
-  },[id])
+  },[])
 
   return (
     <div>
@@ -56,8 +59,8 @@ const Topbar = ({seatCount, setSeatCount, isModalOpen, setIsModalOpen, setSelect
           {/* Left Section */}
           <div className="left-section">
               <h1 className="text-2xl font-bold">{data.title}</h1>
-              <p className="text-gray-500">Cineplex Cinemas - Downtown</p>
-              <p className="text-gray-500">123 Main Street, City</p>
+              <p className="text-gray-500">{theater.name}</p>
+              <p className="text-gray-500">{theater.address.street}, {theater.address.city}</p>
           </div>
 
           {/* Right Section */}

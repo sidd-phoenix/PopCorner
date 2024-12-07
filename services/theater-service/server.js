@@ -86,7 +86,7 @@ app.delete('/theaters/:id', async (req, res) => {
 app.get('/theaters/movie/:movieId', async (req, res) => {
   try {
     const movieId = new mongoose.Types.ObjectId(req.params.movieId);
-    const theaters = await Theater.find({ 'showtimes.movieId': movieId});    
+    const theaters = await Theater.find({ 'movies.movieId': movieId});    
     res.json(theaters);
   } catch (error) {
     res.status(500).json({ error: error.message });

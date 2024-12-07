@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Example logged-in state
-
-  const handleLogoClick = () => {
-    navigate('/'); // Route to homepage
-  };
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null); // To store user info
 
   const handleSignInClick = () => {
-    // Add logic to open sign-in modal or redirect to sign-in page
-    console.log("Sign-in button clicked");
+    console.log("button clicked")
+    setIsLoggedIn(!isLoggedIn);
+  };
+
+  const handleLogoClick = () => {
+    navigate("/");
+    setIsLoggedIn(false);
   };
 
   const handleProfileClick = () => {
-    navigate('/profile'); // Route to profile page
+    navigate("/profile");
   };
 
   return (
     <div className="navbar bg-base-100 px-4">
       {/* Logo */}
       <div className="flex-1">
-          <img src='/logo.png' className='btn btn-ghost' onClick={handleLogoClick}></img>
+        <img
+          src="/logo.png"
+          className="btn btn-ghost"
+          onClick={handleLogoClick}
+        ></img>
       </div>
 
       {/* Search Box */}
@@ -64,7 +70,7 @@ const Navbar = () => {
         {isLoggedIn ? (
           <button onClick={handleProfileClick}>
             <img
-              src="https://via.placeholder.com/40"
+              src={user?.picture || "https://via.placeholder.com/40"}
               alt="Profile"
               className="w-10 h-10 rounded-full"
             />

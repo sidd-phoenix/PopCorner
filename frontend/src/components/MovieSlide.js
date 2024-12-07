@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "./Loading";
 
 const MovieSlide = () => {
-  const { id } = useParams(); // Extract the dynamic id from the URL
+  const { m_id } = useParams(); // Extract the dynamic id from the URL
   const [loading, setLoading] = useState(false);
   const [movie, setMovie] = useState(null); // State to store fetched movie data
   const [error, setError] = useState(null); // State to handle errors
@@ -14,7 +14,7 @@ const MovieSlide = () => {
     setError(null); // Clear any previous errors
 
     try {
-      const res = await axios.get(`http://localhost:3001/movies/${id}`);
+      const res = await axios.get(`http://localhost:3001/movies/${m_id}`);
       // console.log(res.data)
       setMovie(res.data); // Store the fetched movie data
     } catch (err) {
@@ -25,10 +25,8 @@ const MovieSlide = () => {
   };
 
   useEffect(() => {
-    if (id) {
-      fetchData();
-    }
-  }, [id]);
+    fetchData();
+  }, []);
 
   return (
     <div>

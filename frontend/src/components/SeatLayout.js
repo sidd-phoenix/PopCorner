@@ -59,6 +59,7 @@ const SeatLayout = () => {
       // Otherwise, keep the same seats
       return prevSelectedSeats;
     });
+    
   };
 
   // Helper function to render rows of seats
@@ -116,19 +117,19 @@ const SeatLayout = () => {
           </div>
 
           {/* Gold Section */}
-          <h3 className="text-xl font-semibold mb-2 text-center">Gold Section</h3>
+          <h3 className="text-xl font-semibold mb-2 text-center">Gold</h3>
           <div className="grid gap-2 mb-4">
             {renderRows(goldRows, colors.gold.seat)}
           </div>
 
-          {/* Silver Section */}
-          <h3 className="text-xl font-semibold mb-2 text-center">Silver Section</h3>
+          {/* Platinum Section */}
+          <h3 className="text-xl font-semibold mb-2 text-center">Platinum</h3>
           <div className="grid gap-2 mb-4">
             {renderRows(silverRows, colors.silver.seat)}
           </div>
 
           {/* Recliner Section */}
-          <h3 className="text-xl font-semibold mb-2 text-center">Recliner Section</h3>
+          <h3 className="text-xl font-semibold mb-2 text-center">Recliner</h3>
           <div className="grid gap-2 mb-4">
             {renderRows(reclinerRows, colors.recliner.seat)}
           </div>

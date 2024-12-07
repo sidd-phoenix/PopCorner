@@ -32,7 +32,7 @@ function App() {
           </div>
         }
         />
-        <Route path='/movies/:id' element={
+        <Route path='/movies/:m_id' element={
           <div className='App'>
           <header>
             <Navbar />
@@ -48,7 +48,7 @@ function App() {
           </div>
         } 
         />
-        <Route path='/movies/:id/seatSelection' element={
+        <Route path='/movies/:m_id/:t_id' element={
           <div className='App'>
           <header>
             <Navbar />

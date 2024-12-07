@@ -63,7 +63,7 @@ const UserProfile = () => {
         )}
       </div>
 
-      {/* Edit Button */}
+      {/* Edit Button
       <div className="mt-4 text-center">
         <button
           onClick={handleEditClick}
@@ -71,7 +71,7 @@ const UserProfile = () => {
         >
           {isEditing ? 'Save' : 'Edit Profile'}
         </button>
-      </div>
+      </div> */}
     </div>
   );
 };

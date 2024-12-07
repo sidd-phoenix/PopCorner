@@ -54,7 +54,7 @@ const MovieCard=(props)=>{
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{props.ele.title}</h2>
-                    <p>Click the button to watch on Jetflix app.</p>
+                    <p>{props.ele.genre}</p>
                     <div className="card-actions justify-end">
                         <button className="btn btn-primary" onClick={()=>handleMovieClick(props.ele._id)} >Book Tickets</button>
                     </div>

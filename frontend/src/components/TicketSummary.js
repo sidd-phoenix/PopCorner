@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 
 
 const TicketSummary = ({seatCount,selectedSeats}) => {
@@ -9,13 +10,13 @@ const TicketSummary = ({seatCount,selectedSeats}) => {
         firstname: 'John',
         email: 'john.doe@example.com',
         phone: '9876543210',
-    });
+    });   
 
     const handleClick = async () => {
         try
         {
             const { data } = await axios.post('http://localhost:3001/payments/', paymentDetails);
-
+            
             // Dynamically create form and submit
             const form = document.createElement('form');
             form.method = 'POST';
@@ -58,9 +59,9 @@ const TicketSummary = ({seatCount,selectedSeats}) => {
             <p className="mb-2">
             <span className="font-semibold">Number of Seats:</span> {selectedSeats.length}
             </p>
-            {/* <p className="mb-4">
-            <span className="font-semibold">Total Price:</span> ₹{totalPrice}
-            </p> */}
+            <p className="mb-4">
+            <span className="font-semibold">Total Price:</span> ₹500
+            </p>
             {
             selectedSeats.length===seatCount ?<button className="btn btn-primary w-full" onClick={handleClick}>Proceed to Checkout</button>:<button className="btn btn-primary w-full opacity-50 cursor-not-allowed" disabled>Proceed to Checkout</button>
             }
